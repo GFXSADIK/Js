@@ -1,0 +1,23 @@
+<script>
+  const chatWindow = document.getElementById('chat-window');
+  const messageInput = document.getElementById('messageInput');
+  const sendButton = document.getElementById('sendButton');
+
+  // Add event listener for the send button
+  sendButton.addEventListener('click', () => {
+    const message = messageInput.value.trim();
+    if (message !== "") {
+      addMessage("You", message);
+      messageInput.value = ""; // Clear input field
+    }
+  });
+
+  // Function to add a new message to the chat
+  function addMessage(sender, message) {
+    const messageElement = document.createElement('div');
+    messageElement.classList.add('message');
+    messageElement.innerHTML = `<strong>${sender}:</strong> ${message}`;
+    chatWindow.appendChild(messageElement);
+    chatWindow.scrollTop = chatWindow.scrollHeight; // Auto scroll to the bottom
+  }
+</script>
